@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+class cusdetails {
+    int Billid;
+    String cusName;
+    String mobileNumber;
+
+    public cusdetails(int Billid, String cusName, String mobileNumber) {
+        this.Billid = Billid;
+        this.cusName = cusName;
+        this.mobileNumber = mobileNumber;
+    }
+}
+
+class Waterbill extends cusdetails {
+    double billAmount;
+
+    public Waterbill(int Billid, String cusName, String mobileNumber) {
+        super(Billid, cusName, mobileNumber);
+    }
+
+    public void displaycus() {
+        System.out.println("Customer Details:");
+        System.out.println("Bill ID: " + Billid);
+        System.out.println("Customer Name: " + cusName);
+        System.out.println("Mobile Number: " + mobileNumber);
+        System.out.println("Bill Amount: " + billAmount);
+    }
+
+    public void calculateBillAmount(int litresConsumed) {
+        double consumptionTax = 0;
+        if (litresConsumed <= 5000) {
+            consumptionTax = 2.5;
+        } else if (litresConsumed <= 10000) {
+            consumptionTax = 3.5;
+        } else if (litresConsumed <= 15000) {
+            consumptionTax = 4.5;
+        } else if (litresConsumed <= 20000) {
+            consumptionTax = 5.5;
+        } else {
+            consumptionTax = 6.5;
+        }
+        billAmount = litresConsumed * consumptionTax;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Bill ID: ");
+        int Billid = sc.nextInt();
+        System.out.print("Enter Customer Name: ");
+        String cusName = sc.next();
+        System.out.print("Enter Mobile Number: ");
+        String mobileNumber = sc.next();
+        System.out.print("Enter Litres Consumed: ");
+        int litresConsumed = sc.nextInt();
+        Waterbill waterbill = new Waterbill(Billid, cusName, mobileNumber);
+        waterbill.calculateBillAmount(litresConsumed);
+        waterbill.displaycus();
+    }
+}
