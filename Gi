@@ -1,0 +1,81 @@
+import java.util.LinkedList;
+import java.util.Scanner;
+
+class cusdetails {
+    int Billid;
+    String cusName;
+    long mobileNumber;
+
+    cusdetails(int id, String name, long number) {
+        Billid = id;
+        cusName = name;
+        mobileNumber = number;
+    }
+}
+
+class Waterbill extends cusdetails {
+    int litresConsumed;
+
+    Waterbill(int id, String name, long number, int litres) {
+        super(id, name, number);
+        litresConsumed = litres;
+    }
+
+    void displaycus() {
+        double billAmount = calculateBillAmount();
+        System.out.println("Bill ID: " + Billid);
+        System.out.println("Customer Name: " + cusName);
+        System.out.println("Mobile Number: " + mobileNumber);
+        System.out.println("Litres Consumed: " + litresConsumed);
+        System.out.println("Bill Amount: " + billAmount);
+    }
+
+    double calculateBillAmount() {
+        double billAmount = 0;
+        if (litresConsumed <= 10) {
+            billAmount = 50;
+        } else if (litresConsumed <= 20) {
+            billAmount = 50 + (litresConsumed - 10) * 2;
+        } else if (litresConsumed <= 30) {
+            billAmount = 50 + 20 + (litresConsumed - 20) * 3;
+        } else {
+            billAmount = 50 + 20 + 30 + (litresConsumed - 30) * 4;
+        }
+        return billAmount;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        LinkedList<Waterbill> bills = new LinkedList<>();
+
+        System.out.print("Enter the number of bills: ");
+        int numBills = input.nextInt();
+
+        for (int i = 0; i < numBills; i++) {
+            System.out.println("Enter details for bill #" + (i+1) + ":");
+            System.out.print("Enter Bill ID: ");
+            int billID = input.nextInt();
+            input.nextLine(); // Consume the newline character left by nextInt()
+
+            System.out.print("Enter Customer Name: ");
+            String customerName = input.nextLine();
+
+            System.out.print("Enter Mobile Number: ");
+            long mobileNumber = input.nextLong();
+
+            System.out.print("Enter Litres Consumed: ");
+            int litresConsumed = input.nextInt();
+
+            Waterbill bill = new Waterbill(billID, customerName, mobileNumber, litresConsumed);
+            bills.add(bill);
+        }
+
+        System.out.println("Bill Details:");
+        for (Waterbill bill : bills) {
+            bill.displaycus();
+            System.out.println();
+        }
+    }
+}
