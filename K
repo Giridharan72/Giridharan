@@ -1,0 +1,88 @@
+import java.util.LinkedList;
+import java.util.Scanner;
+
+class cusdetails {
+    int billId;
+    String cusName;
+    String mobileNumber;
+
+    public void setCusDetails(int billId, String cusName, String mobileNumber) {
+        this.billId = billId;
+        this.cusName = cusName;
+        this.mobileNumber = mobileNumber;
+    }
+}
+
+class Waterbill extends cusdetails {
+    int litresConsumed;
+    double billAmount;
+
+    public void setLitresConsumed(int litresConsumed) {
+        this.litresConsumed = litresConsumed;
+    }
+
+    public void calculateBillAmount() {
+        if (litresConsumed <= 100) {
+            billAmount = litresConsumed * 1.0;
+        } else if (litresConsumed <= 200) {
+            billAmount = 100 * 1.0 + (litresConsumed - 100) * 1.5;
+        } else if (litresConsumed <= 500) {
+            billAmount = 100 * 1.0 + 100 * 1.5 + (litresConsumed - 200) * 2.0;
+        } else if (litresConsumed <= 1000) {
+            billAmount = 100 * 1.0 + 100 * 1.5 + 300 * 2.0 + (litresConsumed - 500) * 3.0;
+        } else {
+            billAmount = 100 * 1.0 + 100 * 1.5 + 300 * 2.0 + 500 * 3.0 + (litresConsumed - 1000) * 4.0;
+        }
+    }
+
+    public void displaycus() {
+        System.out.println("Customer Details:");
+        System.out.println("Bill Id: " + billId);
+        System.out.println("Customer Name: " + cusName);
+        System.out.println("Mobile Number: " + mobileNumber);
+        System.out.println("Litres Consumed: " + litresConsumed);
+        System.out.println("Bill Amount: Rs." + billAmount);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        LinkedList<Waterbill> waterbills = new LinkedList<>();
+
+        while (true) {
+            System.out.println("1. Add Customer");
+            System.out.println("2. Display All Customers");
+            System.out.println("3. Exit");
+
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            if (choice == 1) {
+                Waterbill waterbill = new Waterbill();
+
+                System.out.print("Enter Bill Id: ");
+                int billId = scanner.nextInt();
+                scanner.nextLine();
+
+                System.out.print("Enter Customer Name: ");
+                String cusName = scanner.nextLine();
+
+                System.out.print("Enter Mobile Number: ");
+                String mobileNumber = scanner.nextLine();
+
+                System.out.print("Enter Litres Consumed: ");
+                int litresConsumed = scanner.nextInt();
+
+                waterbill.setCusDetails(billId, cusName, mobileNumber);
+                waterbill.setLitresConsumed(litresConsumed);
+                waterbill.calculateBillAmount();
+                waterbills.add(waterbill);
+            } else if (choice == 2) {
+                for (Waterbill waterbill : waterbills) {
+                    waterbill.displaycus();
+                }
+            } else if (choice == 3) {
+                break;
+            }
