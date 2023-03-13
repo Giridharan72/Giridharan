@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+class cusdetails {
+    int Billid;
+    String cusName;
+    String MobileNumber;
+}
+
+class Waterbill extends cusdetails {
+    int litresConsumed;
+
+    public void displaycus() {
+        double billAmount = 0;
+
+        if (litresConsumed <= 5000) {
+            billAmount = litresConsumed * 2.5;
+        } else if (litresConsumed <= 10000) {
+            billAmount = 5000 * 2.5 + (litresConsumed - 5000) * 3;
+        } else if (litresConsumed <= 15000) {
+            billAmount = 5000 * 2.5 + 5000 * 3 + (litresConsumed - 10000) * 3.5;
+        } else {
+            billAmount = 5000 * 2.5 + 5000 * 3 + 5000 * 3.5 + (litresConsumed - 15000) * 4;
+        }
+
+        System.out.println("Customer Name: " + cusName);
+        System.out.println("Mobile Number: " + MobileNumber);
+        System.out.println("Bill ID: " + Billid);
+        System.out.println("Litres Consumed: " + litresConsumed);
+        System.out.println("Bill Amount: " + billAmount);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Waterbill wb = new Waterbill();
+
+        System.out.print("Enter Customer Name: ");
+        wb.cusName = sc.nextLine();
+
+        System.out.print("Enter Mobile Number: ");
+        wb.MobileNumber = sc.nextLine();
+
+        System.out.print("Enter Bill ID: ");
+        wb.Billid = sc.nextInt();
+
+        System.out.print("Enter Litres Consumed: ");
+        wb.litresConsumed = sc.nextInt();
+
+        wb.displaycus();
+    }
+}
