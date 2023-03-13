@@ -1,0 +1,68 @@
+import java.sql.*;
+
+class cusdetails {
+    int billid;
+    String cusName;
+    long mobileNo;
+
+    public cusdetails(int billid, String cusName, long mobileNo) {
+        this.billid = billid;
+        this.cusName = cusName;
+        this.mobileNo = mobileNo;
+    }
+}
+
+class Waterbill extends cusdetails {
+    double ratePerLitre = 5.0;
+    double consumptionTax = 0.0;
+
+    public Waterbill(int billid, String cusName, long mobileNo) {
+        super(billid, cusName, mobileNo);
+    }
+
+    public void calculateBill(int litresConsumed) {
+        if (litresConsumed <= 5000) {
+            consumptionTax = 0.0;
+        } else if (litresConsumed <= 10000) {
+            consumptionTax = 0.05;
+        } else if (litresConsumed <= 20000) {
+            consumptionTax = 0.1;
+        } else if (litresConsumed <= 30000) {
+            consumptionTax = 0.15;
+        } else {
+            consumptionTax = 0.2;
+        }
+
+        double billAmount = litresConsumed * ratePerLitre * (1 + consumptionTax);
+        System.out.println("Customer Name: " + cusName);
+        System.out.println("Mobile Number: " + mobileNo);
+        System.out.println("Number of litres consumed: " + litresConsumed);
+        System.out.println("Bill Amount: " + billAmount);
+    }
+}
+
+public class WaterBillCalculator {
+    public static void main(String[] args) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/waterbill", "root", "");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from customers");
+
+            while (rs.next()) {
+                int billid = rs.getInt("billid");
+                String cusName = rs.getString("cusName");
+                long mobileNo = rs.getLong("mobileNo");
+
+                Waterbill wb = new Waterbill(billid, cusName, mobileNo);
+                System.out.println("Enter the number of litres consumed for " + cusName + ": ");
+                int litresConsumed = Integer.parseInt(System.console().readLine());
+                wb.calculateBill(litresConsumed);
+            }
+
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
