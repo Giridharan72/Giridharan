@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+// cusdetails class to store customer details
+class cusdetails {
+    protected int billId;
+    protected String cusName;
+    protected String mobileNumber;
+
+    public cusdetails(int billId, String cusName, String mobileNumber) {
+        this.billId = billId;
+        this.cusName = cusName;
+        this.mobileNumber = mobileNumber;
+    }
+
+    public void displaycus() {
+        System.out.println("Bill ID: " + billId);
+        System.out.println("Customer Name: " + cusName);
+        System.out.println("Mobile Number: " + mobileNumber);
+    }
+}
+
+// Waterbill class which inherits from cusdetails
+class Waterbill extends cusdetails {
+    private int litresConsumed;
+    private double billAmount;
+
+    public Waterbill(int billId, String cusName, String mobileNumber) {
+        super(billId, cusName, mobileNumber);
+    }
+
+    public void setLitresConsumed(int litresConsumed) {
+        this.litresConsumed = litresConsumed;
+    }
+
+    public double getBillAmount() {
+        return billAmount;
+    }
+
+    // method to calculate bill amount based on litres consumed
+    public void calculateBillAmount() {
+        if (litresConsumed <= 100) {
+            billAmount = litresConsumed * 2.5;
+        } else if (litresConsumed <= 200) {
+            billAmount = (100 * 2.5) + ((litresConsumed - 100) * 4);
+        } else if (litresConsumed <= 300) {
+            billAmount = (100 * 2.5) + (100 * 4) + ((litresConsumed - 200) * 6);
+        } else {
+            billAmount = (100 * 2.5) + (100 * 4) + (100 * 6) + ((litresConsumed - 300) * 8);
+        }
+        // add 18% tax to the bill amount
+        billAmount += (billAmount * 0.18);
+    }
+}
+
+public class WaterBillCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Bill ID: ");
+        int billId = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Enter Customer Name: ");
+        String cusName = scanner.nextLine();
+        System.out.print("Enter Mobile Number: ");
+        String mobileNumber = scanner.nextLine();
+        System.out.print("Enter Litres Consumed: ");
+        int litresConsumed = scanner.nextInt();
+
+        Waterbill waterbill = new Waterbill(billId, cusName, mobileNumber);
+        waterbill.setLitresConsumed(litresConsumed);
+        waterbill.calculateBillAmount();
+        waterbill.displaycus();
+        System.out.println("Bill Amount: " + waterbill.getBillAmount());
+
+        scanner.close();
+    }
+}
