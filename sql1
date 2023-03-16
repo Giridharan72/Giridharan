@@ -1,0 +1,75 @@
+create table product(
+prod_id number primary key,
+prod_esc varchar(20) not null,
+price number(10) not null,
+stock number(1) not null
+)
+select * from product;
+create table purchase(
+pur_id number primary key,
+pro_id number(20) not null,
+sup_name varchar(10) not null,
+foreign key(pur_id) references product(prod_id)
+)
+
+create table sales(
+sale_id number primary key,
+qty number(20) not null,
+custname varchar(10) not null,
+foreign key(sale_id) references purchase(pur_id))
+
+insert into product values(10,'ice',100,5);
+insert into product values(20,'cup',200,7);
+insert into product values(30,'juice',300,8);
+insert into product values(40,'diary',400,9);
+
+select * from product;
+
+insert into purchase values(10,300,'manoj');
+insert into purchase values(20,400,'giri');
+insert into purchase values(30,500,'thiru');
+insert into purchase values(40,600,'moorthy');
+
+alter table sales add prodid number(5);
+
+insert into sales values(10,30,'manoj',300);
+insert into sales values(20,31,'giri',400);
+insert into sales values(30,300,'vimalesh',500);
+insert into sales values(40,300,'moorthy',600);
+
+select * from sales;
+
+alter table product modify stock number(10);
+
+update product set stock=56 where prod_id=10;
+select * from product;
+
+select * from  product where stock>7;
+select * from product where stock=56;
+alter table purchase add qty number(5);
+desc  purchase;
+select * from purchases;
+
+create table purchases(
+pur_id number primary key,
+pro_id number(20) not null,
+sup_name varchar(10) not null
+)
+alter table purchases add qty number(5);
+
+insert into purchases (pur_id,pro_id,sup_name,qty) values (50,600,'moorthy',45);
+insert into purchases values(10,300,'manoj',87);
+insert into purchases values(20,400,'giri',56);
+insert into purchases values(30,500,'thiru',7);
+insert into purchases values(40,600,'moorthy',78);
+insert into purchases values(320,400,'giri',76);
+
+select * from purchases;
+
+select product.prod_id ,sum(purchases.qty) as total_quantity from product p join purchases.pro_id 
+on product.prod_id=purchases.pur_id group by product.prod_id;
+
+select pro_id,sum(qty) as total from purchases group by pro_id;
+
+select product.prod_id,product.prod_esc,product.price from product where product.prod_id in 
+(select purchases.pro_id from purchases union select sales.prodid from sales);
