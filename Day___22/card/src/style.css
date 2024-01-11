@@ -1,0 +1,31 @@
+
+
+body{
+    background: linear-gradient(to right,rgb(2, 102, 232),rgb(24, 137, 242),rgb(48, 172, 255) );
+}
+.a {
+    /* Add your custom button styles */
+    background-color: #3498db; /* Change to your preferred color */
+    color: #fff; /* Text color */
+    /* Add more styles as needed */
+  }
+  .b{
+    color: black;
+  }
+
+  .c{
+    text-align: left;
+  }
+
+  .checkmark {
+    color: black;
+    font-size: 2em; /* Adjust the size as needed */
+  }
+  .h{
+    padding-bottom: 25px;
+    
+  }
+  .N{
+    color: lightslategrey;
+
+  }
