@@ -1,5 +1,5 @@
 ## React Shopping Cart
-This is a simple React-based shopping cart application with a focus on managing the cart state using the Context API and reducers. The application includes features such as adding items to the cart, adjusting quantities, and viewing the cart with the total price.
+This is a simple React-based shopping cart application with a focus on managing the cart. The application includes features such as adding items to the cart, adjusting quantities, and viewing the cart with the total price.
 
 ## Features
 Add items to the cart
