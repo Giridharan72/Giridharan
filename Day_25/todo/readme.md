@@ -1,9 +1,9 @@
 
-The app will be running at `https://giridharan-eeay-git-main-giridharans-projects.vercel.app/`.
+# The app will be running at `https://giridharan-eeay-git-main-giridharans-projects.vercel.app/`.
 
 ## Usage
 
-## **Adding a Todo:**
+### **Adding a Todo:**
 - Enter the task name in the "Enter task name" input field.
 - Enter a description in the "Enter description" input field.
 - Click the "Add Todo" button.
