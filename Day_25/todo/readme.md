@@ -5,7 +5,7 @@ The app will be running at `https://giridharan-eeay-git-main-giridharans-project
 
 - **Adding a Todo:**
 - Enter the task name in the "Enter task name" input field.
-- Optionally, enter a description in the "Enter description" input field.
+- Enter a description in the "Enter description" input field.
 - Click the "Add Todo" button.
 
 - **Deleting a Todo:**
