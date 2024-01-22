@@ -1,5 +1,5 @@
 
-# The app will be running at [Todo app] ('https://giridharan-eeay-git-main-giridharans-projects.vercel.app/`).
+# The app will be running at [Todo app] (https://giridharan-eeay-git-main-giridharans-projects.vercel.app/).
 
 ## Usage
 
