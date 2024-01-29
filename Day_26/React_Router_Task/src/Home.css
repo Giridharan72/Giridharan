@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .flex-row {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    border-bottom: 1px solid black; /* Add a solid black border at the bottom */
+  }
+  
+  .column {
+    flex: 1; /* Equal width for all columns */
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-around; /* Evenly distribute navigation links */
+    align-items: flex-start; /* Align items at the top */
+    margin-bottom: 20px; /* Add margin at the bottom for spacing */
+    margin-top: 20px;
+  }
+  
+  nav a {
+    margin: 0 10px; /* Adjust spacing between links */
+    color: black; /* Set text color to black */
+    text-decoration: none; /* Remove default underline */
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards in a row */
+    gap: 20px; /* Gap between cards */
+    margin-top: 20px; /* Margin to separate grid from flex row */
+  }
+  
+  .card-container {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+    gap: 20px; /* Gap between cards */
+    margin-top: 20px;
+  }
+  
+  .card {
+    /* Styles for the card */
+  }
+  
+  .card-image img {
+    width: 100%; /* Ensure images fill their containers */
+  }
+  
+  .column {
+    /* Styles for each column */
+  }
+
+  .card-image {
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
