@@ -7,5 +7,14 @@ Store file information in a MongoDB database.
 List all files stored in the database.
 
 
-## link
-https://github.com/Giridharan72/Giridharan
+## Render URL
+
+- **URL:** [https://giridharan-4.onrender.com/create-file](https://giridharan-4.onrender.com/)https://giridharan-4.onrender.com/
+
+
+## GET
+- **URL:** [https://giridharan-4.onrender.com](https://giridharan-4.onrender.com)https://giridharan-4.onrender.com
+
+
+## POST
+- **URL:** [https://giridharan-4.onrender.com/create-file](https://giridharan-4.onrender.com/)https://giridharan-4.onrender.com/
