@@ -1,0 +1,7 @@
+Content:
+Content of the file
+Additional Information:
+{
+  "key1": "value1",
+  "key2": "value2"
+}
