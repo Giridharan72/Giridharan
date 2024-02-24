@@ -2,7 +2,7 @@
 
 # Mentor and Student Assigning with Database
 
-FrontEnd  [https://preethi-st.github.io/ZEN-Mentors-Frontend/](https://giridharan-1.onrender.com)
+FrontEnd  [https://zen-assign-mentors.herokuapp.com](https://giridharan-1.onrender.com)/students
 
 Agenda
 
